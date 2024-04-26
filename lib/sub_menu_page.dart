@@ -4,8 +4,7 @@ class SubMenuPage extends StatelessWidget {
   final String title;
   final String body;
 
-  const SubMenuPage({Key? key, required this.title, required this.body})
-      : super(key: key);
+  const SubMenuPage({super.key, required this.title, required this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +12,15 @@ class SubMenuPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           title,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor:const Color.fromARGB(255, 99, 98, 199),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Text(
           body,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
       ),
     );

@@ -8,15 +8,17 @@ import 'package:project_go_tech/sub_menu_page.dart';
 class HomePage extends StatelessWidget {
   final Map<String, dynamic> jsonData = jsonDecode(menuJson);
 
+   HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Dynamic Menu',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 99, 98, 199),
       ),
       body: ListView.builder(
         itemCount: jsonData.length,
@@ -25,14 +27,14 @@ class HomePage extends StatelessWidget {
           final submenuData = jsonData[menuKey] as Map<String, dynamic>;
           return Card(
             elevation: 4,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
             child: ExpansionTile(
               title: Text(
                 menuKey,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               children: submenuData.entries
                   .map((entry) => buildSubMenu(context, entry.key, entry.value))
@@ -48,14 +50,14 @@ class HomePage extends StatelessWidget {
     if (value is Map<String, dynamic>) {
       return Card(
         elevation: 2,
-        margin: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+        margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         child: ExpansionTile(
           title: Text(
             key,
-            style: TextStyle(fontWeight: FontWeight.w500),
+            style: const TextStyle(fontWeight: FontWeight.w500),
           ),
           children: value.entries
               .map((entry) => buildSubMenu(context, entry.key, entry.value))
@@ -66,7 +68,7 @@ class HomePage extends StatelessWidget {
       return ListTile(
         title: Text(
           key,
-          style: TextStyle(fontWeight: FontWeight.w500),
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         onTap: () {
           Navigator.push(
@@ -81,6 +83,6 @@ class HomePage extends StatelessWidget {
         },
       );
     }
-    return SizedBox();
+    return const SizedBox();
   }
 }
